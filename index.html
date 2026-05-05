@@ -1,0 +1,1802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honi Poke — Brand Positioning & Summer Campaign</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600&family=Zalando+Sans+Expanded:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --summer-blue: #1B5BA7;
+    --navy: #0F1F45;
+    --salmon: #F5A0A8;
+    --mango: #F5B731;
+    --avocado: #B5CC33;
+    --sunny: #F0F075;
+    --paper: #FAF8F3;
+    --paper-warm: #F4EFE6;
+    --ink: #0E0E0E;
+    --muted: #6B6B6B;
+    --line: #1A1A1A;
+    --rule: rgba(15, 31, 69, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ── TYPOGRAPHY ────────────────────────────── */
+  h1, h2, h3, h4 {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    color: var(--summer-blue);
+    text-transform: uppercase;
+  }
+
+  .display-xl {
+    font-size: clamp(48px, 8.25vw, 135px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+  }
+  .display-lg {
+    font-size: clamp(44px, 7vw, 110px);
+    line-height: 0.88;
+    letter-spacing: -0.025em;
+  }
+  .display-md {
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 0.95;
+  }
+  .display-sm {
+    font-size: clamp(22px, 2.4vw, 32px);
+    line-height: 1.05;
+  }
+
+  .editorial {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  .eyebrow {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .eyebrow.muted { color: var(--muted); }
+  .eyebrow.accent { color: var(--summer-blue); }
+
+  .lede {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: clamp(20px, 2.2vw, 28px);
+    line-height: 1.45;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+
+  p { color: var(--ink); }
+  p.muted { color: var(--muted); }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ───────────────────────────────────── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 243, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+    transition: padding 0.3s ease;
+  }
+  .nav-brand {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.2s ease;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--summer-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--summer-blue); }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--summer-blue); }
+
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+  .nav-toggle span {
+    display: block; width: 22px; height: 1px; background: var(--ink); margin: 5px 0;
+    transition: transform 0.3s ease;
+  }
+
+  /* ── LAYOUT ────────────────────────────────── */
+  section {
+    padding: 140px 40px;
+    position: relative;
+  }
+  .container {
+    max-width: 1340px;
+    margin: 0 auto;
+  }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    margin-bottom: 100px;
+    align-items: end;
+    border-top: 1px solid var(--ink);
+    padding-top: 28px;
+  }
+  .section-head .section-meta { font-size: 11px; }
+  .section-head h2 { font-size: clamp(40px, 6vw, 88px); }
+
+  /* ── HERO ──────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    padding: 200px 40px 80px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+  .hero-eyebrow {
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .hero-eyebrow .dot {
+    width: 6px; height: 6px;
+    background: var(--summer-blue);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    margin-bottom: 40px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 60px;
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+  }
+  .hero-meta-item .label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .hero-meta-item .value {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .hero-image {
+    aspect-ratio: 3/4;
+    background: var(--paper-warm);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── IMAGES & SWAP-OUT POINTS ──────────────── */
+  .img-slot {
+    position: relative;
+    background: var(--paper-warm);
+    overflow: hidden;
+  }
+  .img-slot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .img-slot:hover img { transform: scale(1.02); }
+  .img-slot::after {
+    content: 'Replace';
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(14, 14, 14, 0.85);
+    color: var(--paper);
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+  .img-slot:hover::after { opacity: 1; }
+
+  /* legacy placeholder fallback (still used if image fails to load) */
+  .placeholder {
+    position: relative;
+    background: var(--paper-warm);
+    border: 1px solid rgba(15, 31, 69, 0.08);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(15, 31, 69, 0.2);
+    pointer-events: none;
+  }
+  .placeholder-content {
+    padding: 28px;
+    z-index: 1;
+  }
+  .placeholder-label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+    margin-bottom: 8px;
+  }
+  .placeholder-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── CONTEXT BLOCK ─────────────────────────── */
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+  }
+  .context-cell {
+    padding: 56px 40px 56px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .context-cell:last-child { border-right: none; padding-right: 0; }
+  .context-cell .num {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 12px;
+    color: var(--summer-blue);
+    margin-bottom: 24px;
+    letter-spacing: 0.2em;
+  }
+  .context-cell h3 {
+    font-size: 14px;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+  .context-cell p {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* ── ACCORDION (Insights / Messages) ───────── */
+  .accordion {
+    border-top: 1px solid var(--ink);
+  }
+  .accordion details {
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s ease;
+  }
+  .accordion details[open] {
+    background: rgba(27, 91, 167, 0.025);
+  }
+  .accordion summary {
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    align-items: center;
+    padding: 32px 24px;
+    cursor: pointer;
+    list-style: none;
+    transition: padding 0.25s ease;
+  }
+  .accordion summary:hover { padding-left: 36px; }
+  .accordion summary::-webkit-details-marker { display: none; }
+  .accordion summary::marker { content: ''; }
+  .accordion .acc-num {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--summer-blue);
+    letter-spacing: 0.2em;
+  }
+  .accordion .acc-title {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(20px, 2.4vw, 30px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--summer-blue);
+    line-height: 1.05;
+  }
+  .accordion .acc-toggle {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--summer-blue);
+    text-align: right;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .accordion details[open] .acc-toggle {
+    transform: rotate(45deg);
+  }
+  .accordion .acc-detail {
+    padding: 0 24px 36px 104px;
+    max-width: 760px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  /* ── POSITIONING / CHARGED ─────────────────── */
+  .charged-statement {
+    text-align: center;
+    padding: 100px 0 80px;
+  }
+  .charged-statement .word {
+    display: inline-block;
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(80px, 16vw, 240px);
+    font-weight: 900;
+    color: var(--summer-blue);
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+  .charged-tagline {
+    margin-top: 60px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── VOICE & TONE ──────────────────────────── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--ink);
+  }
+  .voice-row {
+    display: contents;
+  }
+  .voice-cell {
+    padding: 40px 40px 40px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .voice-cell.right {
+    padding-left: 60px;
+    border-left: 1px solid var(--rule);
+  }
+  .voice-cell .label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .voice-cell.left p {
+    font-size: 18px;
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(0,0,0,0.3);
+  }
+  .voice-cell.right p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--ink);
+  }
+
+  /* ── SUMMER HERO ───────────────────────────── */
+  .summer-hero {
+    background: var(--paper);
+    padding: 140px 40px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .summer-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .summer-hero-image {
+    aspect-ratio: 4/5;
+  }
+  .summer-tagline {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(60px, 9vw, 140px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.82;
+    letter-spacing: -0.035em;
+    color: var(--summer-blue);
+    margin: 0;
+  }
+  .summer-subline {
+    margin-top: 60px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 32px;
+  }
+  .summer-subline .promise {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+  .summer-subline .promise .accent {
+    color: var(--summer-blue);
+  }
+
+  /* ── MENU ──────────────────────────────────── */
+  .menu-section {
+    margin-bottom: 80px;
+  }
+  .menu-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 40px;
+  }
+  .menu-section-head h3 {
+    font-size: clamp(24px, 3vw, 40px);
+    color: var(--ink);
+  }
+  .menu-section-head .count {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .signature-card {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+  }
+  .signature-card .img-box {
+    aspect-ratio: 4/3;
+    margin-bottom: 28px;
+  }
+  .signature-card .tag {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+    margin-bottom: 14px;
+  }
+  .signature-card h4 {
+    font-size: clamp(28px, 3vw, 44px);
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .signature-card .description {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 24px;
+  }
+  .signature-card .ingredients {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .menu-item {
+    border-top: 1px solid var(--ink);
+    padding-top: 24px;
+  }
+  .menu-item .item-tag {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+    margin-bottom: 14px;
+  }
+  .menu-item h5 {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .menu-item p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .feature-row.reverse { direction: rtl; }
+  .feature-row.reverse > * { direction: ltr; }
+  .feature-row .feature-img {
+    aspect-ratio: 4/5;
+  }
+  .feature-row.crunch .feature-img {
+    aspect-ratio: 1/1;
+  }
+  .feature-text .quote {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(28px, 3.5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--summer-blue);
+    margin: 24px 0 32px;
+  }
+  .feature-text .quote::before { content: '\201C'; color: var(--summer-blue); }
+  .feature-text .quote::after { content: '\201D'; color: var(--summer-blue); }
+  .feature-text .body-copy {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .feature-text .pricing {
+    margin-top: 28px;
+    padding: 20px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .feature-text .pricing .pricing-label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .feature-text .pricing .pricing-value {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--summer-blue);
+  }
+
+  .salads-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .salad-card .img-box {
+    aspect-ratio: 1/1;
+    margin-bottom: 20px;
+  }
+  .salad-card h5 {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .salad-card p {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── PULL QUOTE ────────────────────────────── */
+  .pull-quote {
+    text-align: center;
+    padding: 140px 0 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pull-quote .editorial-quote {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: clamp(28px, 4vw, 56px);
+    line-height: 1.1;
+    color: var(--ink);
+    letter-spacing: -0.015em;
+  }
+  .pull-quote .accent {
+    color: var(--summer-blue);
+  }
+
+  /* ── LAUNCH SECTION ────────────────────────── */
+  .launch-banner {
+    background: var(--summer-blue);
+    color: var(--paper);
+    padding: 80px 60px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .launch-banner .launch-eyebrow {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 243, 0.7);
+    margin-bottom: 20px;
+  }
+  .launch-banner .launch-date {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(56px, 9vw, 130px);
+    font-weight: 900;
+    line-height: 0.85;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--paper);
+  }
+  .launch-banner .launch-copy p {
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--paper);
+  }
+  .launch-banner .launch-meta {
+    margin-top: 28px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(250, 248, 243, 0.25);
+    display: flex;
+    gap: 40px;
+  }
+  .launch-banner .launch-meta-item .l-label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 243, 0.6);
+    margin-bottom: 6px;
+  }
+  .launch-banner .launch-meta-item .l-value {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--paper);
+  }
+
+  .botd-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .botd-day {
+    padding: 36px 24px 32px;
+    border-right: 1px solid var(--rule);
+    text-align: left;
+    transition: background 0.3s ease;
+  }
+  .botd-day:last-child { border-right: none; }
+  .botd-day:hover { background: rgba(27, 91, 167, 0.04); }
+  .botd-day .day-label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+    margin-bottom: 16px;
+  }
+  .botd-day .day-bowl {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .botd-pricing {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 28px;
+    padding: 22px 0 4px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .botd-pricing .price-label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .botd-pricing .price-value {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 900;
+    color: var(--summer-blue);
+    letter-spacing: -0.02em;
+  }
+  .botd-pricing .price-strike {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 16px;
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(0,0,0,0.4);
+    margin-left: 12px;
+  }
+
+  .recipe-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 80px;
+  }
+  .recipe-card {
+    border-top: 1px solid var(--ink);
+    padding-top: 28px;
+  }
+  .recipe-card .r-tag {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+    margin-bottom: 14px;
+  }
+  .recipe-card h5 {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .recipe-changes {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .recipe-pill {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border: 1px solid var(--summer-blue);
+    color: var(--summer-blue);
+    border-radius: 100px;
+  }
+  .recipe-pill.minus { border-style: dashed; opacity: 0.7; }
+
+  /* ── ROLLOUT SECTION ───────────────────────── */
+  .rollout-block {
+    margin-bottom: 80px;
+  }
+  .rollout-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--ink);
+    margin-bottom: 40px;
+  }
+  .rollout-head h3 {
+    font-size: clamp(24px, 3vw, 40px);
+    color: var(--ink);
+  }
+  .rollout-head .timing {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .rollout-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .rollout-item {
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rollout-item .ri-num {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 11px;
+    color: var(--summer-blue);
+    letter-spacing: 0.22em;
+    margin-bottom: 8px;
+  }
+  .rollout-item h6 {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .rollout-item p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+  .rollout-item .status {
+    margin-top: 10px;
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--summer-blue);
+  }
+  .rollout-item .status.pending { color: var(--muted); }
+
+  /* ── CONTACT FOOTER ────────────────────────── */
+  .footer {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 40px 50px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 50px;
+  }
+  .footer-col .label {
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 243, 0.5);
+    margin-bottom: 14px;
+  }
+  .footer-col p, .footer-col a {
+    font-size: 17px;
+    color: var(--paper);
+    line-height: 1.6;
+  }
+  .footer-col a:hover { color: var(--salmon); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(250, 248, 243, 0.15);
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(250, 248, 243, 0.5);
+  }
+
+  /* ── ANIMATIONS ────────────────────────────── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ────────────────────────────── */
+  @media (max-width: 980px) {
+    section { padding: 80px 24px; }
+    .nav { padding: 14px 24px; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--paper); flex-direction: column; gap: 0; padding: 20px 24px;
+      border-bottom: 1px solid var(--rule); }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    .nav-links li:last-child { border-bottom: none; }
+    .nav-toggle { display: block; }
+
+    .hero { grid-template-columns: 1fr; gap: 50px; padding: 140px 24px 60px; }
+    .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px; }
+    .context-grid { grid-template-columns: 1fr; }
+    .context-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 36px 0; }
+    .context-cell:last-child { border-bottom: none; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .voice-cell.right { padding-left: 0; border-left: none; }
+    .voice-cell { padding-right: 0; }
+    .summer-hero-grid { grid-template-columns: 1fr; gap: 50px; }
+    .summer-hero { padding: 80px 24px; }
+    .summer-subline { grid-template-columns: 1fr; }
+    .signature-grid { grid-template-columns: 1fr; gap: 50px; }
+    .three-grid { grid-template-columns: 1fr; gap: 28px; }
+    .feature-row { grid-template-columns: 1fr; gap: 40px; }
+    .feature-row.reverse { direction: ltr; }
+    .salads-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-bottom { flex-direction: column; gap: 12px; }
+    .accordion summary { grid-template-columns: 50px 1fr 30px; padding: 24px 16px; }
+    .accordion summary:hover { padding-left: 16px; }
+    .accordion .acc-detail { padding: 0 16px 28px 66px; font-size: 18px; }
+    .hero-meta { flex-direction: column; gap: 16px; }
+    .pull-quote { padding: 80px 0 40px; }
+
+    .launch-banner { grid-template-columns: 1fr; gap: 32px; padding: 48px 28px; margin-bottom: 60px; }
+    .launch-banner .launch-meta { flex-direction: column; gap: 16px; }
+    .botd-grid { grid-template-columns: 1fr 1fr; }
+    .botd-day { border-right: none; border-bottom: 1px solid var(--rule); }
+    .botd-day:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .botd-day:last-child { grid-column: 1 / -1; border-right: none; border-bottom: none; }
+    .botd-pricing { flex-direction: column; gap: 4px; align-items: flex-start; }
+    .recipe-row { grid-template-columns: 1fr; gap: 24px; margin-top: 50px; }
+    .rollout-grid { grid-template-columns: 1fr; gap: 24px; }
+    .rollout-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ NAV -->
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-brand">Honi Poke</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#brand" class="nav-link">Brand</a></li>
+    <li><a href="#summer" class="nav-link">Summer</a></li>
+    <li><a href="#menu" class="nav-link">Menu</a></li>
+    <li><a href="#launch" class="nav-link">Launch</a></li>
+    <li><a href="#rollout" class="nav-link">Rollout</a></li>
+    <li><a href="#contact" class="nav-link">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════════════════ HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      <span class="eyebrow">Brand Positioning &middot; Summer Campaign</span>
+    </div>
+    <h1 class="display-xl">New Brand<br>Positioning<br>&amp; Summer<br>Campaign</h1>
+    <p class="lede" style="margin-top:32px;max-width:580px;">A premium fast-casual brand for people who don't stop &mdash; and the place where their stories happen.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Issue</div>
+        <div class="value">Spring/Summer 2026</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Category</div>
+        <div class="value">Premium Fast-Casual</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Market</div>
+        <div class="value">London</div>
+      </div>
+    </div>
+  </div>
+  <!-- ▶ TO REPLACE: swap the src= URL below with your own image
+       Suggested: editorial fashion-style portrait of a young London professional mid-bite,
+       natural daylight, premium feel. Aspect ratio 3:4. -->
+  <div class="hero-image img-slot">
+    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=900&auto=format&fit=crop&q=80" alt="Honi Poke hero">
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ BRAND -->
+<section id="brand">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-meta eyebrow muted">01 &mdash; Brand Positioning</div>
+      <div>
+        <h2>Where We<br>Operate</h2>
+      </div>
+    </div>
+
+    <div class="context-grid reveal">
+      <div class="context-cell">
+        <div class="num">01</div>
+        <h3 class="eyebrow">The Audience</h3>
+        <p>Urban professionals, 22&ndash;40, London. High-output people who treat their body as infrastructure &mdash; and their lunch break as the hinge between morning and afternoon performance.</p>
+      </div>
+      <div class="context-cell">
+        <div class="num">02</div>
+        <h3 class="eyebrow">The Product</h3>
+        <p>Premium poke bowls. Above-average price point, justified by quality, freshness, and a bold visual identity. Fast but not fast-food.</p>
+      </div>
+      <div class="context-cell">
+        <div class="num">03</div>
+        <h3 class="eyebrow">The Space</h3>
+        <p>Premium fast-casual. Competing not just with poke chains but with any brand that touches London's wellness, performance, and lifestyle culture.</p>
+      </div>
+    </div>
+
+    <!-- INSIGHTS -->
+    <div style="margin-top:160px;" class="reveal">
+      <div class="section-head" style="margin-bottom:60px;">
+        <div class="section-meta eyebrow muted">Key Insights</div>
+        <div>
+          <h2>What we know<br>about our people</h2>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>
+            <span class="acc-num">01</span>
+            <span class="acc-title">Energy is the real product</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">People don't come for food. They come to feel sharp, light, and back in motion. The bowl is the delivery mechanism for a feeling.</div>
+        </details>
+        <details>
+          <summary>
+            <span class="acc-num">02</span>
+            <span class="acc-title">The lunch hour is the pivot point</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">For white-collar London, 1PM is the hinge of the day. What you eat there either fuels or drags the afternoon.</div>
+        </details>
+        <details>
+          <summary>
+            <span class="acc-num">03</span>
+            <span class="acc-title">Premium &ne; slow or joyless</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">This audience rejects trade-offs. They want quality, speed, and pleasure &mdash; simultaneously. Honi actually delivers that.</div>
+        </details>
+        <details>
+          <summary>
+            <span class="acc-num">04</span>
+            <span class="acc-title">Stories move people, facts don't</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">A vivid bowl is forgotten. A bowl that belongs to a story &mdash; a pitch, a first date, a run, a reunion &mdash; lives in memory and gets shared.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- CHARGED -->
+    <div class="charged-statement reveal" style="margin-top:80px;">
+      <div class="eyebrow muted" style="margin-bottom:48px;">The Positioning Idea</div>
+      <span class="word">Charged.</span>
+      <p class="lede charged-tagline">Honi Poke is the fuel for people who don't stop &mdash; and the place where their stories happen. Every great day has a Honi in it somewhere.</p>
+    </div>
+
+    <!-- KEY MESSAGES -->
+    <div style="margin-top:120px;" class="reveal">
+      <div class="section-head" style="margin-bottom:60px;">
+        <div class="section-meta eyebrow muted">Key Messages</div>
+        <div>
+          <h2>Three ideas<br>we say loud</h2>
+        </div>
+      </div>
+
+      <div class="accordion">
+        <details>
+          <summary>
+            <span class="acc-num">01</span>
+            <span class="acc-title">Fuel that keeps up with you</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">For the runner, the founder, the creative director eating at their desk. Honi Poke matches your pace &mdash; told through real people, real moments.</div>
+        </details>
+        <details>
+          <summary>
+            <span class="acc-num">02</span>
+            <span class="acc-title">The 1PM edge</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">Every lunch break is a scene in someone's bigger story. The people who perform best in the afternoon made a better choice at lunch.</div>
+        </details>
+        <details>
+          <summary>
+            <span class="acc-num">03</span>
+            <span class="acc-title">Colour is a promise</span>
+            <span class="acc-toggle">+</span>
+          </summary>
+          <div class="acc-detail">What looks energetic, is energetic. The bold aesthetic of Honi Poke isn't decoration &mdash; it signals freshness, intensity, and life.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- VOICE & TONE -->
+    <div style="margin-top:160px;" class="reveal">
+      <div class="section-head" style="margin-bottom:60px;">
+        <div class="section-meta eyebrow muted">Voice &amp; Tone</div>
+        <div>
+          <h2>Less copywriting.<br>More storytelling.</h2>
+        </div>
+      </div>
+
+      <div class="voice-grid">
+        <div class="voice-cell left">
+          <div class="label">Instead of</div>
+          <p>Bold flavours for busy lives.</p>
+        </div>
+        <div class="voice-cell right">
+          <div class="label">We say this</div>
+          <p>She had 20 minutes and a lot to figure out. She figured it out.</p>
+        </div>
+
+        <div class="voice-cell left">
+          <div class="label">Instead of</div>
+          <p>Clean fuel for high performers.</p>
+        </div>
+        <div class="voice-cell right">
+          <div class="label">We say this</div>
+          <p>He runs 5K on Tuesdays. Not because he has to. Because of what comes after.</p>
+        </div>
+
+        <div class="voice-cell left">
+          <div class="label">Instead of</div>
+          <p>Fresh ingredients, every time.</p>
+        </div>
+        <div class="voice-cell right">
+          <div class="label">We say this</div>
+          <p>She comes every Thursday. Has done since the Shoreditch opening.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRAND SLOGAN -->
+    <div class="charged-statement reveal" style="margin-top:120px;padding:80px 0 40px;">
+      <div class="eyebrow muted" style="margin-bottom:32px;">Brand Slogan</div>
+      <div style="font-family:'Zalando Sans Expanded',sans-serif;font-size:clamp(48px,9vw,140px);font-weight:900;text-transform:uppercase;color:var(--summer-blue);letter-spacing:-0.035em;line-height:0.9;">Life in a bowl</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ PULL QUOTE -->
+<div class="pull-quote reveal">
+  <div class="container">
+    <p class="editorial-quote">
+      Most food brands ask <span class="accent">&ldquo;what do people want to eat?&rdquo;</span> Honi Poke asks <span class="accent">&ldquo;what are people living through &mdash; and how do we show up in it?&rdquo;</span>
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ SUMMER HERO -->
+<section class="summer-hero" id="summer">
+  <div class="container summer-hero-grid">
+    <!-- ▶ TO REPLACE: swap the src= URL below with your own image
+         Suggested: vibrant overhead shot of the Swicy Prawn bowl with tortilla chip base —
+         bold colour, hard light, fashion-still treatment. Aspect ratio 4:5. -->
+    <div class="summer-hero-image img-slot">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80" alt="Swicy Prawn Bowl campaign hero">
+    </div>
+    <div>
+      <div class="eyebrow muted" style="margin-bottom:24px;">02 &mdash; Summer Campaign</div>
+      <h2 class="summer-tagline">Summer.<br>Charged.</h2>
+      <p class="lede" style="margin-top:32px;">The first seasonal expression of the Charged positioning. Summer at peak performance.</p>
+
+      <div class="summer-subline">
+        <div class="promise"><span class="accent">&mdash;</span> Lighter bowls.</div>
+        <div class="promise"><span class="accent">&mdash;</span> Bigger flavour.</div>
+        <div class="promise"><span class="accent">&mdash;</span> Serious protein.</div>
+        <div class="promise"><span class="accent">&mdash;</span> Crunchier base.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ TREND CONTEXT -->
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-meta eyebrow muted">Why Now &middot; Trend Context</div>
+      <div>
+        <h2>Three forces<br>aligning</h2>
+      </div>
+    </div>
+
+    <div class="accordion reveal">
+      <details>
+        <summary>
+          <span class="acc-num">01</span>
+          <span class="acc-title">Swicy is the flavour of 2026</span>
+          <span class="acc-toggle">+</span>
+        </summary>
+        <div class="acc-detail">Sweet-heat is the #1 flavour trend of 2026, named by National Geographic, Tastewise and FlavourTrends as the defining combination of the year. McDonald's, Wingstop, Hershey and Takis all made structural commitments to swicy in Q1 &mdash; this is no longer a trend, it's an industry framework.</div>
+      </details>
+      <details>
+        <summary>
+          <span class="acc-num">02</span>
+          <span class="acc-title">Protein culture is mainstream</span>
+          <span class="acc-toggle">+</span>
+        </summary>
+        <div class="acc-detail">Post-pandemic wellness has made protein consciousness universal, not niche. Our audience expects it. More protein options make the choice easier.</div>
+      </details>
+      <details>
+        <summary>
+          <span class="acc-num">03</span>
+          <span class="acc-title">The premium salad gap</span>
+          <span class="acc-toggle">+</span>
+        </summary>
+        <div class="acc-detail">London lacks a fast-casual brand owning the premium salad space with real flavour credibility. Poke Salads fills that gap with Honi's existing DNA.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ MENU -->
+<section id="menu" style="background:var(--paper-warm);">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-meta eyebrow muted">03 &mdash; Menu Highlights</div>
+      <div>
+        <h2>What's<br>Launching</h2>
+      </div>
+    </div>
+
+    <!-- SIGNATURE BOWLS -->
+    <div class="menu-section reveal">
+      <div class="menu-section-head">
+        <h3>New Signature Bowls</h3>
+        <span class="count">Two heroes</span>
+      </div>
+
+      <div class="signature-grid">
+        <div class="signature-card">
+          <!-- ▶ TO REPLACE: swap src= with your Swicy Prawn Bowl photo. 4:3 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&auto=format&fit=crop&q=80" alt="Swicy Prawn Bowl">
+          </div>
+          <div class="tag">Hero Launch</div>
+          <h4>Swicy Prawn Bowl</h4>
+          <p class="description">Sweet got a little dangerous. The defining bowl of the season &mdash; riding the #1 flavour trend of 2026 with full Honi flavour confidence.</p>
+          <p class="ingredients">Mango &middot; Mashed Avocado &middot; Pickled Red Cabbage &middot; Sunomono Cucumbers &middot; Masago &middot; Citrus Masago Sriracha Mayo &middot; Wasabi Furikake &middot; Sushi Rice or Tortilla Base</p>
+        </div>
+
+        <div class="signature-card">
+          <!-- ▶ TO REPLACE: swap src= with your Tokyo Yuzu Bowl photo. 4:3 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&auto=format&fit=crop&q=80" alt="Tokyo Yuzu Bowl">
+          </div>
+          <div class="tag">New &middot; Tokyo Flavour</div>
+          <h4>Tokyo Yuzu Bowl</h4>
+          <p class="description">Tokyo flavour, yuzu finish. A bright, citrus-forward bowl built around the new Miso Yuzu dressing &mdash; clean, fresh, unmistakably Japanese.</p>
+          <p class="ingredients">Salmon &middot; Mango &middot; Mashed Avocado &middot; Sunomono Cucumber &middot; Japanese Cabbage Salad &middot; Masago &middot; Furikake &middot; Miso Yuzu Dressing</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TORTILLA CRUNCH FEATURE -->
+    <div class="menu-section reveal" style="margin-top:120px;">
+      <div class="menu-section-head">
+        <h3>The Crunch</h3>
+        <span class="count">A new base</span>
+      </div>
+
+      <div class="feature-row crunch">
+        <!-- ▶ TO REPLACE: swap src= with your tortilla crunch photo. 1:1 ratio. -->
+        <div class="feature-img img-slot">
+          <img src="https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=900&auto=format&fit=crop&q=80" alt="Crispy tortilla chips">
+        </div>
+        <div class="feature-text">
+          <div class="eyebrow accent">Bowls just got crunchier</div>
+          <p class="quote">We went swicy. We went crispy.</p>
+          <p class="body-copy">A crispy tortilla-chip base, available across BYO bowls and built into the new Swicy Prawn and Tokyo Yuzu signatures. The indulgent, crunchy format that swicy flavours were made for &mdash; and the texture move the category has been waiting for.</p>
+          <div class="pricing">
+            <span class="pricing-label">Tortilla Chip Base</span>
+            <span class="pricing-value">+ &pound;1.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POKE SALADS -->
+    <div class="menu-section reveal" style="margin-top:120px;">
+      <div class="menu-section-head">
+        <h3>Poke Salads</h3>
+        <span class="count">A new category</span>
+      </div>
+
+      <p class="lede" style="max-width:780px;margin-bottom:60px;">Same Honi poke-style build. Salad base of kale and mixed leaves instead of rice. New dressings. All the flavour, lighter format. Built for summer and London's growing premium salad demand.</p>
+
+      <div class="salads-grid">
+        <div class="salad-card">
+          <!-- ▶ TO REPLACE: swap src= with your Seoul Fire Chicken photo. 1:1 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=600&auto=format&fit=crop&q=80" alt="Seoul Fire Chicken salad">
+          </div>
+          <h5>Seoul Fire Chicken</h5>
+          <p>Spicy, bold, Korean-inspired</p>
+        </div>
+        <div class="salad-card">
+          <!-- ▶ TO REPLACE: swap src= with your Citrus Yuzu Salmon photo. 1:1 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80" alt="Citrus Yuzu Salmon salad">
+          </div>
+          <h5>Citrus Yuzu Salmon</h5>
+          <p>Bright, citrus-forward</p>
+        </div>
+        <div class="salad-card">
+          <!-- ▶ TO REPLACE: swap src= with your Pacific Tuna Bowl photo. 1:1 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1604908554049-01ab2adcafd5?w=600&auto=format&fit=crop&q=80" alt="Pacific Tuna Bowl salad">
+          </div>
+          <h5>Pacific Tuna Bowl</h5>
+          <p>Classic poke energy, lighter base</p>
+        </div>
+        <div class="salad-card">
+          <!-- ▶ TO REPLACE: swap src= with your Green Zen Tofu photo. 1:1 ratio. -->
+          <div class="img-box img-slot">
+            <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&auto=format&fit=crop&q=80" alt="Green Zen Tofu salad">
+          </div>
+          <h5>Green Zen Tofu</h5>
+          <p>Fresh, clean, plant-forward</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BYO REFRESH -->
+    <div class="menu-section reveal" style="margin-top:120px;">
+      <div class="menu-section-head">
+        <h3>BYO Menu Refreshed</h3>
+        <span class="count">Nine additions</span>
+      </div>
+
+      <div class="three-grid">
+        <div class="menu-item">
+          <div class="item-tag">New Proteins</div>
+          <h5>3 Additions</h5>
+          <p>Swicy Prawns &middot; Salmon Tartare &middot; Crab Salad. Three premium proteins expanding the BYO and signature bowl lineup.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-tag">New Toppings</div>
+          <h5>3 Additions</h5>
+          <p>Pickled Red Cabbage &middot; Red Masago &middot; Pok Choi. New colour, texture and depth across every bowl.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-tag">New Sauces</div>
+          <h5>3 Additions</h5>
+          <p>Miso Yuzu &middot; Citrus Masago Sriracha Mayo &middot; Vegan Sriracha Mayo. Japanese-leaning, distinctive, on-brand.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BITES & SNACKS -->
+    <div class="menu-section reveal" style="margin-top:120px;">
+      <div class="menu-section-head">
+        <h3>Bites, Snacks &amp; Sauces</h3>
+        <span class="count">Same umami, now vegan</span>
+      </div>
+
+      <div class="three-grid">
+        <div class="menu-item">
+          <!-- ▶ TO REPLACE: swap src= with your Karaage Bites photo. 1:1 ratio. -->
+          <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
+            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80" alt="Karaage Bites">
+          </div>
+          <div class="item-tag">New Bite</div>
+          <h5>Karaage Bites</h5>
+          <p>Crispy Japanese-style fried chicken bites, served with Gochujang sauce. Bold, snackable, made for sharing.</p>
+        </div>
+        <div class="menu-item">
+          <!-- ▶ TO REPLACE: swap src= with your Chicken Katsu Bites photo. 1:1 ratio. -->
+          <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
+            <img src="https://images.unsplash.com/photo-1606755962773-d324e9a13086?w=600&auto=format&fit=crop&q=80" alt="Chicken Katsu Bites">
+          </div>
+          <div class="item-tag">New Bite</div>
+          <h5>Chicken Katsu Bites</h5>
+          <p>Panko-crisped katsu, served with classic katsu sauce. Comfort-food umami, sized for a side or a craving.</p>
+        </div>
+        <div class="menu-item">
+          <!-- ▶ TO REPLACE: swap src= with your Vegan Sriracha photo. 1:1 ratio. -->
+          <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
+            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&auto=format&fit=crop&q=80" alt="Vegan Sriracha sauce">
+          <div class="item-tag">New Sauce</div>
+          <h5>Vegan Sriracha</h5>
+          <p>Same umami, now vegan. Plus in-house nut snacks expanding the grab-and-go offer.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ LAUNCH -->
+<section id="launch">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-meta eyebrow muted">04 &mdash; Launch &amp; Promotion</div>
+      <div>
+        <h2>Going<br>Live</h2>
+      </div>
+    </div>
+
+    <!-- LAUNCH BANNER -->
+    <div class="launch-banner reveal">
+      <div>
+        <div class="launch-eyebrow">Summer Menu Launch</div>
+        <div class="launch-date">3 June<br>2026</div>
+      </div>
+      <div class="launch-copy">
+        <p>The new Summer menu lands across all London locations on 3 June. Two new signature bowls, the tortilla-chip base, the Poke Salads category, the bites lineup, and a refreshed BYO &mdash; live, day one.</p>
+        <div class="launch-meta">
+          <div class="launch-meta-item">
+            <div class="l-label">Date</div>
+            <div class="l-value">3 June 2026</div>
+          </div>
+          <div class="launch-meta-item">
+            <div class="l-label">Coverage</div>
+            <div class="l-value">All London Locations</div>
+          </div>
+          <div class="launch-meta-item">
+            <div class="l-label">Channel</div>
+            <div class="l-value">Dine-in &middot; Delivery &middot; Pickup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOWL OF THE DAY -->
+    <div class="reveal" style="margin-bottom:40px;">
+      <div class="rollout-head">
+        <h3>Bowl of the Day</h3>
+        <span class="timing">Refreshed &middot; Continues into Summer</span>
+      </div>
+      <p class="lede" style="max-width:780px;margin-bottom:48px;">We don't stop. The Bowl of the Day promotion continues with a refreshed lineup &mdash; one signature bowl per weekday, every day flat &pound;9.95.</p>
+
+      <div class="botd-grid">
+        <div class="botd-day">
+          <div class="day-label">Monday</div>
+          <div class="day-bowl">Honi</div>
+        </div>
+        <div class="botd-day">
+          <div class="day-label">Tuesday</div>
+          <div class="day-bowl">Chicken Salad</div>
+        </div>
+        <div class="botd-day">
+          <div class="day-label">Wednesday</div>
+          <div class="day-bowl">Ahi</div>
+        </div>
+        <div class="botd-day">
+          <div class="day-label">Thursday</div>
+          <div class="day-bowl">Salmon Salad</div>
+        </div>
+        <div class="botd-day">
+          <div class="day-label">Friday</div>
+          <div class="day-bowl">Katsu</div>
+        </div>
+      </div>
+
+      <div class="botd-pricing">
+        <span class="price-label">Every Bowl of the Day</span>
+        <div>
+          <span class="price-value">&pound;9.95</span>
+          <span class="price-strike">&pound;11.95</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RECIPE UPDATES -->
+    <div class="reveal">
+      <div class="rollout-head" style="margin-top:80px;">
+        <h3>Recipe Updates</h3>
+        <span class="timing">Honi &amp; Ahi</span>
+      </div>
+
+      <div class="recipe-row" style="margin-top:0;">
+        <div class="recipe-card">
+          <div class="r-tag">Updated Recipe</div>
+          <h5>Honi Bowl</h5>
+          <div class="recipe-changes">
+            <span class="recipe-pill minus">&minus; Less fish</span>
+            <span class="recipe-pill">+ Avocado scoop</span>
+          </div>
+        </div>
+        <div class="recipe-card">
+          <div class="r-tag">Updated Recipe</div>
+          <h5>Ahi Bowl</h5>
+          <div class="recipe-changes">
+            <span class="recipe-pill minus">&minus; Less fish</span>
+            <span class="recipe-pill">+ Avocado scoop</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ ROLLOUT -->
+<section id="rollout" style="background:var(--paper-warm);">
+  <div class="container">
+
+    <div class="section-head reveal">
+      <div class="section-meta eyebrow muted">05 &mdash; Rollout</div>
+      <div>
+        <h2>Where the<br>Campaign Lives</h2>
+      </div>
+    </div>
+
+    <!-- WINDOW & STREET -->
+    <div class="rollout-block reveal">
+      <div class="rollout-head">
+        <h3>Window &amp; Street</h3>
+        <span class="timing">High-traffic touchpoints</span>
+      </div>
+      <div class="rollout-grid">
+        <div class="rollout-item">
+          <div class="ri-num">01</div>
+          <h6>Window Vinyls</h6>
+          <p>Bowl of the Day featured prominently. Summer campaign messaging integrated across the vinyl &mdash; visible from the street, working all day.</p>
+          <div class="status">In production</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">02</div>
+          <h6>A-Boards</h6>
+          <p>New Summer items take centre stage &mdash; the two new signature bowls (Swicy Prawn, Tokyo Yuzu) at every branch entrance.</p>
+          <div class="status">In production</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">03</div>
+          <h6>Digital Totems</h6>
+          <p>Window-mounted digital totems being rolled out to most locations. Promote offers, looped Summer creative, dynamic price points.</p>
+          <div class="status pending">Phased rollout</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN-STORE -->
+    <div class="rollout-block reveal">
+      <div class="rollout-head">
+        <h3>In-Store</h3>
+        <span class="timing">Inside every location</span>
+      </div>
+      <div class="rollout-grid">
+        <div class="rollout-item">
+          <div class="ri-num">01</div>
+          <h6>Digital Menu Screens</h6>
+          <p>New digital menu boards across all locations &mdash; refreshed visuals, integrated Summer campaign, Bowl of the Day always visible.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">02</div>
+          <h6>Printed Menus</h6>
+          <p>Updated printed menus reflecting the full Summer lineup &mdash; new bowls, salads, tortilla base, BYO additions, bites.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">03</div>
+          <h6>Kiosk Splash Screens</h6>
+          <p>Kiosk idle screens reskinned with Summer campaign creative &mdash; first thing the customer sees on approach.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">04</div>
+          <h6>Kiosk Cut-Outs</h6>
+          <p>Green-leaf physical cut-outs around kiosk screens &mdash; signalling the new Poke Salads category at the point of order.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACKAGING -->
+    <div class="rollout-block reveal">
+      <div class="rollout-head">
+        <h3>Packaging</h3>
+        <span class="timing">Phased through June</span>
+      </div>
+      <div class="rollout-grid">
+        <div class="rollout-item">
+          <div class="ri-num">01</div>
+          <h6>Bowls</h6>
+          <p>No change. Current 1300ml bagasse bowl continues &mdash; one size, sustainable, on-brand.</p>
+          <div class="status">No change</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">02</div>
+          <h6>New Pink-Blue Bags</h6>
+          <p>Updated takeaway bags in Salmon Pink &amp; Summer Blue &mdash; unmistakably Honi on the street.</p>
+          <div class="status pending">Arriving later June</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">03</div>
+          <h6>Sauce Labels</h6>
+          <p>Colourful labels rolled across the full sauce range. Bold, distinctive, designed to be photographed.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">04</div>
+          <h6>G&amp;G Range</h6>
+          <p>All Grab-and-Go items getting refreshed labels in one unified style &mdash; consistent shelf presence across every fridge.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+        <div class="rollout-item">
+          <div class="ri-num">05</div>
+          <h6>Sauce Stickers</h6>
+          <p>Branded stickers for portioned sauces &mdash; small format, big touchpoint.</p>
+          <div class="status">Launch with menu</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ FINAL PULL QUOTE -->
+<div class="pull-quote reveal">
+  <div class="container">
+    <p class="editorial-quote">
+      <span class="accent">Charged energy.</span> Human stories. London life, in a bowl.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ FOOTER -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="label">Brand</div>
+        <p>Honi Poke<br>Premium fast-casual poke<br>Operating across London</p>
+      </div>
+      <div class="footer-col">
+        <div class="label">Press &amp; Partnerships</div>
+        <p><a href="mailto:hello@honipoke.com">hello@honipoke.com</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="label">Online</div>
+        <p><a href="https://honipoke.com" target="_blank">honipoke.com</a><br><a href="https://instagram.com" target="_blank">@honipoke</a></p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Honi Poke</span>
+      <span>Life in a bowl</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Mobile nav ──
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ── Scroll-spy nav ──
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navItems = document.querySelectorAll('.nav-link');
+
+  function setActive() {
+    const scrollY = window.scrollY + 120;
+    let current = '';
+    sections.forEach(s => {
+      if (scrollY >= s.offsetTop) current = s.id;
+    });
+    navItems.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // ── Reveal on scroll ──
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
