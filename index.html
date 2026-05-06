@@ -49,21 +49,21 @@
   }
 
   .display-xl {
-    font-size: clamp(48px, 8.25vw, 135px);
+    font-size: clamp(35px, 5.95vw, 98px);
     line-height: 0.85;
     letter-spacing: -0.04em;
   }
   .display-lg {
-    font-size: clamp(44px, 7vw, 110px);
+    font-size: clamp(37px, 5.95vw, 94px);
     line-height: 0.88;
     letter-spacing: -0.025em;
   }
   .display-md {
-    font-size: clamp(32px, 4.5vw, 64px);
+    font-size: clamp(27px, 3.83vw, 54px);
     line-height: 0.95;
   }
   .display-sm {
-    font-size: clamp(22px, 2.4vw, 32px);
+    font-size: clamp(19px, 2.04vw, 27px);
     line-height: 1.05;
   }
 
@@ -106,7 +106,7 @@
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;
-    padding: 18px 40px;
+    padding: 18px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -164,7 +164,7 @@
 
   /* ── LAYOUT ────────────────────────────────── */
   section {
-    padding: 140px 40px;
+    padding: 140px 20px;
     position: relative;
   }
   .container {
@@ -182,19 +182,29 @@
     padding-top: 28px;
   }
   .section-head .section-meta { font-size: 11px; }
-  .section-head h2 { font-size: clamp(40px, 6vw, 88px); }
+  .section-head h2 { font-size: clamp(34px, 5.1vw, 75px); }
 
   /* ── HERO ──────────────────────────────────── */
   .hero {
     min-height: 100vh;
-    padding: 200px 40px 80px;
+    padding: 100px 20px 80px;
     display: grid;
-    grid-template-columns: 40fr 60fr;
-    gap: 140px;
+    grid-template-columns: 55fr 40fr;
+    gap: 5%;
     align-items: center;
     position: relative;
   }
-  .hero-text { min-width: 0; max-width: 100%; }
+  .hero-text {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .hero-text h1 {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
   .hero-eyebrow {
     margin-bottom: 32px;
     display: flex;
@@ -244,34 +254,71 @@
     position: relative;
     background: var(--paper-warm);
     overflow: hidden;
+    cursor: pointer;
   }
   .img-slot img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.6s ease, filter 0.3s ease;
+    pointer-events: none;
   }
-  .img-slot:hover img { transform: scale(1.02); }
+  .img-slot:hover img { transform: scale(1.02); filter: brightness(0.85); }
   .img-slot::after {
-    content: 'Replace';
+    content: '↑ Click to upload';
     position: absolute;
-    top: 14px;
-    right: 14px;
-    background: rgba(14, 14, 14, 0.85);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(14, 14, 14, 0.92);
     color: var(--paper);
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: 9px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 6px 10px;
+    padding: 12px 18px;
     opacity: 0;
     transition: opacity 0.25s ease;
     pointer-events: none;
     z-index: 2;
+    white-space: nowrap;
   }
   .img-slot:hover::after { opacity: 1; }
+
+  .img-slot.has-custom::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--summer-blue);
+    box-shadow: 0 0 0 2px var(--paper);
+    z-index: 3;
+  }
+  .img-slot .reset-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(14, 14, 14, 0.85);
+    color: var(--paper);
+    border: none;
+    font-family: 'Zalando Sans Expanded', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 4;
+    transition: opacity 0.25s ease, background 0.2s ease;
+  }
+  .img-slot.has-custom:hover .reset-btn { opacity: 1; }
+  .img-slot .reset-btn:hover { background: rgba(204, 30, 87, 0.95); }
 
   /* legacy placeholder fallback (still used if image fails to load) */
   .placeholder {
@@ -319,9 +366,10 @@
     border-top: 1px solid var(--ink);
   }
   .context-cell {
-    padding: 56px 40px 56px 0;
+    padding: 56px 10px;
     border-right: 1px solid var(--rule);
   }
+  .context-cell:first-child { padding-left: 0; }
   .context-cell:last-child { border-right: none; padding-right: 0; }
   .context-cell .num {
     font-family: 'Zalando Sans Expanded', sans-serif;
@@ -372,7 +420,7 @@
   }
   .accordion .acc-title {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(20px, 2.4vw, 30px);
+    font-size: clamp(17px, 2.04vw, 26px);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.01em;
@@ -407,7 +455,7 @@
   .charged-statement .word {
     display: inline-block;
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(80px, 16vw, 240px);
+    font-size: clamp(68px, 13.6vw, 204px);
     font-weight: 900;
     color: var(--summer-blue);
     letter-spacing: -0.04em;
@@ -472,7 +520,7 @@
     margin-bottom: 40px;
   }
   .palette-head h3 {
-    font-size: clamp(24px, 3vw, 40px);
+    font-size: clamp(20px, 2.55vw, 34px);
     color: var(--ink);
   }
   .palette-head .palette-meta {
@@ -491,7 +539,7 @@
     width: 100%;
   }
   .palette-row.core {
-    gap: 60px;
+    gap: 20px;
     justify-content: flex-start;
   }
   .swatch-tile {
@@ -504,8 +552,8 @@
     transition: transform 0.4s ease;
   }
   .palette-row.core .swatch-tile {
-    flex: 0 0 auto;
-    width: 180px;
+    flex: 0 0 calc((100% / 8) - 18px);
+    max-width: 180px;
   }
   .swatch-tile:hover { transform: translateY(-4px); }
   .swatch-tile .chip {
@@ -515,9 +563,6 @@
     border-radius: 50%;
     border: 1px solid rgba(15, 31, 69, 0.06);
     box-shadow: 0 1px 2px rgba(15, 31, 69, 0.04);
-  }
-  .palette-row.core .swatch-tile .chip {
-    max-width: 180px;
   }
   .swatch-tile .meta {
     padding-top: 18px;
@@ -591,7 +636,7 @@
   }
   .type-card h4 {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(28px, 3vw, 40px);
+    font-size: clamp(24px, 2.55vw, 34px);
     font-weight: 800;
     text-transform: uppercase;
     color: var(--ink);
@@ -635,7 +680,7 @@
     margin-bottom: 36px;
   }
   .pkg-head h3 {
-    font-size: clamp(22px, 2.6vw, 34px);
+    font-size: clamp(19px, 2.21vw, 29px);
     color: var(--ink);
   }
   .pkg-head .pkg-meta {
@@ -698,7 +743,7 @@
   /* ── SUMMER HERO ───────────────────────────── */
   .summer-hero {
     background: var(--paper);
-    padding: 140px 40px;
+    padding: 140px 20px;
     border-top: 1px solid var(--ink);
     border-bottom: 1px solid var(--ink);
   }
@@ -713,7 +758,7 @@
   }
   .summer-tagline {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(60px, 9vw, 140px);
+    font-size: clamp(51px, 7.65vw, 119px);
     font-weight: 900;
     text-transform: uppercase;
     line-height: 0.82;
@@ -754,7 +799,7 @@
     margin-bottom: 40px;
   }
   .menu-section-head h3 {
-    font-size: clamp(24px, 3vw, 40px);
+    font-size: clamp(20px, 2.55vw, 34px);
     color: var(--ink);
   }
   .menu-section-head .count {
@@ -788,7 +833,7 @@
     margin-bottom: 14px;
   }
   .signature-card h4 {
-    font-size: clamp(28px, 3vw, 44px);
+    font-size: clamp(24px, 2.55vw, 37px);
     color: var(--ink);
     margin-bottom: 18px;
   }
@@ -859,7 +904,7 @@
     font-family: 'Zalando Sans Expanded', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: clamp(28px, 3.5vw, 48px);
+    font-size: clamp(24px, 2.98vw, 41px);
     line-height: 1.05;
     letter-spacing: -0.015em;
     color: var(--summer-blue);
@@ -932,13 +977,13 @@
     font-family: 'Zalando Sans Expanded', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
-    font-size: clamp(28px, 4vw, 56px);
+    font-size: clamp(24px, 3.4vw, 48px);
     line-height: 1.1;
     color: var(--ink);
     letter-spacing: -0.015em;
   }
   .pull-quote .editorial-quote.sm {
-    font-size: clamp(25px, 3.6vw, 50px);
+    font-size: clamp(21px, 3.06vw, 43px);
   }
   .pull-quote .editorial-quote + .editorial-quote {
     margin-top: 0.45em;
@@ -969,7 +1014,7 @@
   }
   .launch-banner .launch-date {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(56px, 9vw, 130px);
+    font-size: clamp(48px, 7.65vw, 111px);
     font-weight: 900;
     line-height: 0.85;
     letter-spacing: -0.03em;
@@ -1039,7 +1084,7 @@
   }
   .botd-day .day-bowl {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(20px, 2vw, 26px);
+    font-size: clamp(17px, 1.7vw, 22px);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.01em;
@@ -1064,7 +1109,7 @@
   }
   .botd-pricing .price-value {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(28px, 3vw, 40px);
+    font-size: clamp(24px, 2.55vw, 34px);
     font-weight: 900;
     color: var(--summer-blue);
     letter-spacing: -0.02em;
@@ -1139,7 +1184,7 @@
     margin-bottom: 40px;
   }
   .rollout-head h3 {
-    font-size: clamp(24px, 3vw, 40px);
+    font-size: clamp(20px, 2.55vw, 34px);
     color: var(--ink);
   }
   .rollout-head .timing {
@@ -1209,7 +1254,7 @@
   }
   .strategy-pull .pull-line {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(28px, 4.4vw, 60px);
+    font-size: clamp(24px, 3.74vw, 51px);
     line-height: 1.05;
     font-weight: 700;
     text-transform: uppercase;
@@ -1229,7 +1274,7 @@
     color: var(--summer-blue);
     font-family: 'Zalando Sans Expanded', sans-serif;
     font-weight: 900;
-    font-size: clamp(36px, 4.5vw, 56px);
+    font-size: clamp(31px, 3.83vw, 48px);
     letter-spacing: -0.04em;
     line-height: 1;
     transform: rotate(-6deg);
@@ -1277,7 +1322,7 @@
   .tool-block:first-of-type { border-top: 1px solid var(--ink); }
   .tool-block .tool-num {
     font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: clamp(60px, 8vw, 110px);
+    font-size: clamp(51px, 6.8vw, 94px);
     font-weight: 900;
     line-height: 0.9;
     color: var(--summer-blue);
@@ -1292,7 +1337,7 @@
     margin-top: 14px;
   }
   .tool-block .tool-content h3 {
-    font-size: clamp(28px, 3.4vw, 44px);
+    font-size: clamp(24px, 2.89vw, 37px);
     color: var(--ink);
     margin-bottom: 14px;
   }
@@ -1354,7 +1399,7 @@
     border-bottom: 1px solid var(--ink);
     margin-top: 40px;
   }
-  .stamp-block h3 { font-size: clamp(28px, 3.4vw, 44px); color: var(--ink); margin-bottom: 18px; }
+  .stamp-block h3 { font-size: clamp(24px, 2.89vw, 37px); color: var(--ink); margin-bottom: 18px; }
   .stamp-block p { font-size: 17px; line-height: 1.6; color: var(--muted); margin-bottom: 24px; max-width: 580px; }
   .stamp-block ul { list-style: none; padding: 0; }
   .stamp-block li {
@@ -1381,7 +1426,7 @@
     margin-bottom: 24px;
   }
   .counter-section h3 {
-    font-size: clamp(32px, 4.5vw, 60px);
+    font-size: clamp(27px, 3.83vw, 51px);
     margin-bottom: 60px;
     color: var(--ink);
   }
@@ -1440,7 +1485,7 @@
   .footer {
     background: var(--ink);
     color: var(--paper);
-    padding: 80px 40px 50px;
+    padding: 80px 20px 50px;
   }
   .footer-grid {
     display: grid;
@@ -1491,8 +1536,8 @@
 
   /* ── RESPONSIVE ────────────────────────────── */
   @media (max-width: 980px) {
-    section { padding: 80px 24px; }
-    .nav { padding: 14px 24px; }
+    section { padding: 80px 20px; }
+    .nav { padding: 14px 20px; }
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
       background: var(--paper); flex-direction: column; gap: 0; padding: 20px 24px;
       border-bottom: 1px solid var(--rule); }
@@ -1501,7 +1546,7 @@
     .nav-links li:last-child { border-bottom: none; }
     .nav-toggle { display: block; }
 
-    .hero { grid-template-columns: 1fr; gap: 50px; padding: 140px 24px 60px; }
+    .hero { grid-template-columns: 1fr; gap: 50px; padding: 70px 20px 60px; }
     .hero-image { height: 70vw; min-height: 320px; }
     .section-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 50px; }
     .context-grid { grid-template-columns: 1fr; }
@@ -1511,15 +1556,15 @@
     .voice-cell.right { padding-left: 0; border-left: none; }
     .voice-cell { padding-right: 0; }
     .summer-hero-grid { grid-template-columns: 1fr; gap: 50px; }
-    .summer-hero { padding: 80px 24px; }
+    .summer-hero { padding: 80px 20px; }
     .summer-subline { grid-template-columns: 1fr; }
     .palette-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
     .palette-grid.core { grid-template-columns: repeat(2, 1fr); }
     .palette-row { flex-wrap: wrap; gap: 24px; justify-content: center; }
     .palette-row .swatch-tile { flex: 0 0 calc(33.333% - 16px); }
     .palette-row .swatch-tile .chip { max-width: 100px; }
-    .palette-row.core .swatch-tile { flex: 0 0 calc(50% - 12px); width: auto; }
-    .palette-row.core .swatch-tile .chip { max-width: 140px; }
+    .palette-row.core .swatch-tile { flex: 0 0 calc(50% - 12px); max-width: none; }
+    .palette-row.core .swatch-tile .chip { max-width: 100px; }
     .palette-head { flex-direction: column; align-items: flex-start; gap: 8px; }
 
     .pkg-row-2 { grid-template-columns: 1fr; gap: 28px; }
@@ -1739,7 +1784,7 @@
     <!-- BRAND SLOGAN -->
     <div class="charged-statement reveal" style="margin-top:120px;padding:80px 0 40px;">
       <div class="eyebrow muted" style="margin-bottom:32px;">Brand Slogan</div>
-      <div style="font-family:'Zalando Sans Expanded',sans-serif;font-size:clamp(48px,9vw,140px);font-weight:900;text-transform:uppercase;color:var(--summer-blue);letter-spacing:-0.035em;line-height:0.9;">Life in a bowl</div>
+      <div style="font-family:'Zalando Sans Expanded',sans-serif;font-size:clamp(41px,7.65vw,119px);font-weight:900;text-transform:uppercase;color:var(--summer-blue);letter-spacing:-0.035em;line-height:0.9;">Life in a bowl</div>
     </div>
 
   </div>
@@ -2806,6 +2851,111 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => io.observe(el));
+
+  // ── Image upload (per-slot, persisted to localStorage) ──
+  const STORAGE_PREFIX = 'honi-img-';
+  const STORAGE_KEYS_KEY = 'honi-img-keys';
+
+  // Hidden file input reused across slots
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = 'image/*';
+  fileInput.style.display = 'none';
+  document.body.appendChild(fileInput);
+
+  let activeSlot = null;
+
+  // Track keys we've stored so we can list/clear
+  function getStoredKeys() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS_KEY) || '[]'); }
+    catch { return []; }
+  }
+  function saveStoredKeys(keys) {
+    try { localStorage.setItem(STORAGE_KEYS_KEY, JSON.stringify(keys)); } catch {}
+  }
+  function rememberKey(key) {
+    const keys = getStoredKeys();
+    if (!keys.includes(key)) { keys.push(key); saveStoredKeys(keys); }
+  }
+  function forgetKey(key) {
+    saveStoredKeys(getStoredKeys().filter(k => k !== key));
+  }
+
+  // Initialise every img-slot
+  const slots = document.querySelectorAll('.img-slot');
+  slots.forEach((slot, idx) => {
+    const slotId = 'slot-' + idx;
+    slot.dataset.slotId = slotId;
+
+    const img = slot.querySelector('img');
+    if (!img) return;
+
+    // Save the original src so we can restore on reset
+    slot.dataset.originalSrc = img.getAttribute('src');
+
+    // Reset button (hidden until custom image present)
+    const resetBtn = document.createElement('button');
+    resetBtn.className = 'reset-btn';
+    resetBtn.type = 'button';
+    resetBtn.textContent = 'Reset';
+    resetBtn.setAttribute('aria-label', 'Reset to default image');
+    resetBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      img.src = slot.dataset.originalSrc;
+      slot.classList.remove('has-custom');
+      try { localStorage.removeItem(STORAGE_PREFIX + slotId); } catch {}
+      forgetKey(slotId);
+    });
+    slot.appendChild(resetBtn);
+
+    // Restore previously uploaded image, if any
+    try {
+      const saved = localStorage.getItem(STORAGE_PREFIX + slotId);
+      if (saved) {
+        img.src = saved;
+        slot.classList.add('has-custom');
+      }
+    } catch {}
+
+    // Click anywhere on the slot to upload
+    slot.addEventListener('click', () => {
+      activeSlot = slot;
+      fileInput.value = '';   // reset so same file can be reselected
+      fileInput.click();
+    });
+  });
+
+  // Handle the file pick
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file || !activeSlot) return;
+    if (!file.type.startsWith('image/')) {
+      alert('Please select an image file.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+      const dataUrl = evt.target.result;
+      const img = activeSlot.querySelector('img');
+      const slotId = activeSlot.dataset.slotId;
+
+      img.src = dataUrl;
+      activeSlot.classList.add('has-custom');
+
+      // Try to persist; if quota exceeded, gracefully fall back
+      try {
+        localStorage.setItem(STORAGE_PREFIX + slotId, dataUrl);
+        rememberKey(slotId);
+      } catch (err) {
+        console.warn('Could not save image to localStorage (size/quota):', err);
+        alert('Image is too large to save between page loads, but it will display for this session.');
+      }
+      activeSlot = null;
+    };
+    reader.onerror = () => { alert('Could not read file.'); activeSlot = null; };
+    reader.readAsDataURL(file);
+  });
 </script>
 
 </body>
