@@ -117,12 +117,14 @@
     transition: padding 0.3s ease;
   }
   .nav-brand {
-    font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--summer-blue);
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+  .nav-brand img {
+    display: block;
+    height: 32px;
+    width: auto;
   }
   .nav-links {
     display: flex;
@@ -249,76 +251,20 @@
     overflow: hidden;
   }
 
-  /* ── IMAGES & SWAP-OUT POINTS ──────────────── */
+  /* ── IMAGES ────────────────────────────────── */
   .img-slot {
     position: relative;
     background: var(--paper-warm);
     overflow: hidden;
-    cursor: pointer;
   }
   .img-slot img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease, filter 0.3s ease;
-    pointer-events: none;
+    transition: transform 0.6s ease;
   }
-  .img-slot:hover img { transform: scale(1.02); filter: brightness(0.85); }
-  .img-slot::after {
-    content: '↑ Click to upload';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(14, 14, 14, 0.92);
-    color: var(--paper);
-    font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 12px 18px;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
-    z-index: 2;
-    white-space: nowrap;
-  }
-  .img-slot:hover::after { opacity: 1; }
-
-  .img-slot.has-custom::before {
-    content: '';
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--summer-blue);
-    box-shadow: 0 0 0 2px var(--paper);
-    z-index: 3;
-  }
-  .img-slot .reset-btn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(14, 14, 14, 0.85);
-    color: var(--paper);
-    border: none;
-    font-family: 'Zalando Sans Expanded', sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 6px 10px;
-    cursor: pointer;
-    opacity: 0;
-    z-index: 4;
-    transition: opacity 0.25s ease, background 0.2s ease;
-  }
-  .img-slot.has-custom:hover .reset-btn { opacity: 1; }
-  .img-slot .reset-btn:hover { background: rgba(204, 30, 87, 0.95); }
+  .img-slot:hover img { transform: scale(1.02); }
 
   /* legacy placeholder fallback (still used if image fails to load) */
   .placeholder {
@@ -1613,7 +1559,7 @@
 
 <!-- ═══════════════════════════════════════════ NAV -->
 <nav class="nav" id="nav">
-  <a href="#top" class="nav-brand">Honi Poke</a>
+  <a href="#top" class="nav-brand"><img src="images/logo.jpg" alt="Honi Poke"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#brand" class="nav-link">Brand</a></li>
     <li><a href="#palette" class="nav-link">Palette</a></li>
@@ -1659,7 +1605,7 @@
        Suggested: editorial fashion-style portrait of a young London professional mid-bite,
        natural daylight, premium feel. Aspect ratio 3:4. -->
   <div class="hero-image img-slot">
-    <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=900&auto=format&fit=crop&q=80" alt="Honi Poke hero">
+    <img src="images/hero.jpg" alt="Honi Poke hero">
   </div>
 </section>
 
@@ -1933,7 +1879,7 @@
       <div class="type-card">
         <!-- ▶ TO REPLACE: swap src= with poster mockup using current Mango font. Portrait 3:4. -->
         <div class="type-img img-slot">
-          <img src="https://images.unsplash.com/photo-1542744095-291d1f67b221?w=900&auto=format&fit=crop&q=80" alt="Current font poster mockup">
+          <img src="images/type-mango.jpg" alt="Current font poster mockup">
         </div>
         <div class="type-meta">
           <span class="type-status outgoing">Outgoing</span>
@@ -1946,7 +1892,7 @@
       <div class="type-card">
         <!-- ▶ TO REPLACE: swap src= with poster mockup using new Mattone font. Portrait 3:4. -->
         <div class="type-img img-slot">
-          <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=900&auto=format&fit=crop&q=80" alt="New Mattone font poster mockup">
+          <img src="images/type-mattone.jpg" alt="New Mattone font poster mockup">
         </div>
         <div class="type-meta">
           <span class="type-status">New &middot; Headlines</span>
@@ -1991,7 +1937,7 @@
         </div>
         <!-- ▶ TO REPLACE: swap src= with photo of current Honi bowl. 4:3 ratio. -->
         <div class="pkg-img img-slot">
-          <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80" alt="Current Honi Poke bowl">
+          <img src="images/pkg-current-bowl.jpg" alt="Current Honi Poke bowl">
         </div>
       </div>
 
@@ -2004,7 +1950,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with the new 1300ml Regular bowl design. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1604908554049-01ab2adcafd5?w=900&auto=format&fit=crop&q=80" alt="Regular bowl 1300ml">
+            <img src="images/pkg-bowl-1300.jpg" alt="Regular bowl 1300ml">
           </div>
           <h4>Regular &middot; 1300ml</h4>
           <p>The full Honi build. Generous portion, current customer favourite, refreshed graphics.</p>
@@ -2012,7 +1958,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with the new 750ml Small bowl design. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&auto=format&fit=crop&q=80" alt="Small bowl 750ml">
+            <img src="images/pkg-bowl-750.jpg" alt="Small bowl 750ml">
           </div>
           <h4>Small &middot; 750ml</h4>
           <p>New compact size for lighter portions and salads. Same design language, smaller footprint.</p>
@@ -2033,7 +1979,7 @@
         </div>
         <!-- ▶ TO REPLACE: swap src= with new pink-blue takeaway bag photo. 4:3 ratio. -->
         <div class="pkg-img img-slot">
-          <img src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?w=900&auto=format&fit=crop&q=80" alt="New Honi Poke takeaway bags">
+          <img src="images/pkg-bags.jpg" alt="New Honi Poke takeaway bags">
         </div>
       </div>
     </div>
@@ -2048,7 +1994,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with hot sides G&G photo. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=900&auto=format&fit=crop&q=80" alt="Hot sides G&G">
+            <img src="images/pkg-gng-hot.jpg" alt="Hot sides G&G">
           </div>
           <h4>Hot Sides</h4>
           <p>Karaage bites, katsu, warm protein add-ons. Refreshed labels, consistent shelf presence.</p>
@@ -2056,7 +2002,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with cold sides G&G photo. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=900&auto=format&fit=crop&q=80" alt="Cold sides G&G">
+            <img src="images/pkg-gng-cold.jpg" alt="Cold sides G&G">
           </div>
           <h4>Cold Sides</h4>
           <p>Salads, sides, dressings, snackable add-ons. Single label system across the whole fridge.</p>
@@ -2077,7 +2023,7 @@
         </div>
         <!-- ▶ TO REPLACE: swap src= with Sushi G&G product photo. 4:3 ratio. -->
         <div class="pkg-img img-slot">
-          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=900&auto=format&fit=crop&q=80" alt="Sushi Grab and Go range">
+          <img src="images/pkg-sushi.jpg" alt="Sushi Grab and Go range">
         </div>
       </div>
     </div>
@@ -2092,7 +2038,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with big sauce bottle labels photo. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=900&auto=format&fit=crop&q=80" alt="Big sauce bottle labels">
+            <img src="images/pkg-sauce-big.jpg" alt="Big sauce bottle labels">
           </div>
           <h4>Big Sauce Bottles</h4>
           <p>Colourful bottle labels rolled across the full sauce range &mdash; Citrus Masago Sriracha, Miso Yuzu, Vegan Sriracha and the rest. Bold, distinctive, photogenic.</p>
@@ -2100,7 +2046,7 @@
         <div class="pkg-card">
           <!-- ▶ TO REPLACE: swap src= with portioned sauce sticker photo. 4:3 ratio. -->
           <div class="pkg-img img-slot">
-            <img src="https://images.unsplash.com/photo-1580651315530-69c8e0903883?w=900&auto=format&fit=crop&q=80" alt="Portioned sauce stickers">
+            <img src="images/pkg-sauce-portion.jpg" alt="Portioned sauce stickers">
           </div>
           <h4>Portioned Sauces</h4>
           <p>Branded stickers for portioned sauce cups &mdash; small format, big touchpoint, the closest the brand gets to the customer.</p>
@@ -2118,7 +2064,7 @@
          Suggested: vibrant overhead shot of the Swicy Prawn bowl with tortilla chip base —
          bold colour, hard light, fashion-still treatment. Aspect ratio 4:5. -->
     <div class="summer-hero-image img-slot">
-      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80" alt="Swicy Prawn Bowl campaign hero">
+      <img src="images/summer-hero.jpg" alt="Swicy Prawn Bowl campaign hero">
     </div>
     <div>
       <div class="eyebrow muted" style="margin-bottom:24px;">02 &mdash; Summer Campaign</div>
@@ -2196,7 +2142,7 @@
         <div class="signature-card">
           <!-- ▶ TO REPLACE: swap src= with your Swicy Prawn Bowl photo. 4:3 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=900&auto=format&fit=crop&q=80" alt="Swicy Prawn Bowl">
+            <img src="images/swicy-prawn.jpg" alt="Swicy Prawn Bowl">
           </div>
           <div class="tag">Hero Launch</div>
           <h4>Swicy Prawn Bowl</h4>
@@ -2207,7 +2153,7 @@
         <div class="signature-card">
           <!-- ▶ TO REPLACE: swap src= with your Tokyo Yuzu Bowl photo. 4:3 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&auto=format&fit=crop&q=80" alt="Tokyo Yuzu Bowl">
+            <img src="images/tokyo-yuzu.jpg" alt="Tokyo Yuzu Bowl">
           </div>
           <div class="tag">New &middot; Tokyo Flavour</div>
           <h4>Tokyo Yuzu Bowl</h4>
@@ -2227,7 +2173,7 @@
       <div class="feature-row crunch">
         <!-- ▶ TO REPLACE: swap src= with your tortilla crunch photo. 1:1 ratio. -->
         <div class="feature-img img-slot">
-          <img src="https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=900&auto=format&fit=crop&q=80" alt="Crispy tortilla chips">
+          <img src="images/tortilla-crunch.jpg" alt="Crispy tortilla chips">
         </div>
         <div class="feature-text">
           <div class="eyebrow accent">Bowls just got crunchier</div>
@@ -2254,7 +2200,7 @@
         <div class="salad-card">
           <!-- ▶ TO REPLACE: swap src= with your Seoul Fire Chicken photo. 1:1 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=600&auto=format&fit=crop&q=80" alt="Seoul Fire Chicken salad">
+            <img src="images/salad-seoul-fire.jpg" alt="Seoul Fire Chicken salad">
           </div>
           <h5>Seoul Fire Chicken</h5>
           <p>Spicy, bold, Korean-inspired</p>
@@ -2262,7 +2208,7 @@
         <div class="salad-card">
           <!-- ▶ TO REPLACE: swap src= with your Citrus Yuzu Salmon photo. 1:1 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80" alt="Citrus Yuzu Salmon salad">
+            <img src="images/salad-citrus-yuzu.jpg" alt="Citrus Yuzu Salmon salad">
           </div>
           <h5>Citrus Yuzu Salmon</h5>
           <p>Bright, citrus-forward</p>
@@ -2270,7 +2216,7 @@
         <div class="salad-card">
           <!-- ▶ TO REPLACE: swap src= with your Pacific Tuna Bowl photo. 1:1 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1604908554049-01ab2adcafd5?w=600&auto=format&fit=crop&q=80" alt="Pacific Tuna Bowl salad">
+            <img src="images/salad-pacific-tuna.jpg" alt="Pacific Tuna Bowl salad">
           </div>
           <h5>Pacific Tuna Bowl</h5>
           <p>Classic poke energy, lighter base</p>
@@ -2278,7 +2224,7 @@
         <div class="salad-card">
           <!-- ▶ TO REPLACE: swap src= with your Green Zen Tofu photo. 1:1 ratio. -->
           <div class="img-box img-slot">
-            <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&auto=format&fit=crop&q=80" alt="Green Zen Tofu salad">
+            <img src="images/salad-green-zen.jpg" alt="Green Zen Tofu salad">
           </div>
           <h5>Green Zen Tofu</h5>
           <p>Fresh, clean, plant-forward</p>
@@ -2315,15 +2261,15 @@
     <!-- BITES & SNACKS -->
     <div class="menu-section reveal" style="margin-top:120px;">
       <div class="menu-section-head">
-        <h3>Bites, Snacks &amp; Sauces</h3>
-        <span class="count">Same umami, now vegan</span>
+        <h3>Bites &amp; Snacks</h3>
+        <span class="count">Two new sides</span>
       </div>
 
-      <div class="three-grid">
+      <div class="signature-grid">
         <div class="menu-item">
           <!-- ▶ TO REPLACE: swap src= with your Karaage Bites photo. 1:1 ratio. -->
           <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
-            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=600&auto=format&fit=crop&q=80" alt="Karaage Bites">
+            <img src="images/bite-karaage.jpg" alt="Karaage Bites">
           </div>
           <div class="item-tag">New Bite</div>
           <h5>Karaage Bites</h5>
@@ -2332,19 +2278,11 @@
         <div class="menu-item">
           <!-- ▶ TO REPLACE: swap src= with your Chicken Katsu Bites photo. 1:1 ratio. -->
           <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
-            <img src="https://images.unsplash.com/photo-1606755962773-d324e9a13086?w=600&auto=format&fit=crop&q=80" alt="Chicken Katsu Bites">
+            <img src="images/bite-katsu.jpg" alt="Chicken Katsu Bites">
           </div>
           <div class="item-tag">New Bite</div>
           <h5>Chicken Katsu Bites</h5>
           <p>Panko-crisped katsu, served with classic katsu sauce. Comfort-food umami, sized for a side or a craving.</p>
-        </div>
-        <div class="menu-item">
-          <!-- ▶ TO REPLACE: swap src= with your Vegan Sriracha photo. 1:1 ratio. -->
-          <div class="img-box img-slot" style="aspect-ratio:1/1;margin-bottom:20px;">
-            <img src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=600&auto=format&fit=crop&q=80" alt="Vegan Sriracha sauce">
-          <div class="item-tag">New Sauce</div>
-          <h5>Vegan Sriracha</h5>
-          <p>Same umami, now vegan. Plus in-house nut snacks expanding the grab-and-go offer.</p>
         </div>
       </div>
     </div>
@@ -2400,7 +2338,7 @@
         <div class="botd-day">
           <!-- ▶ TO REPLACE: swap src= with your Honi Bowl photo. 1:1 ratio. -->
           <div class="day-image img-slot">
-            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80" alt="Honi Bowl">
+            <img src="images/botd-honi.jpg" alt="Honi Bowl">
           </div>
           <div class="day-text">
             <div class="day-label">Monday</div>
@@ -2410,7 +2348,7 @@
         <div class="botd-day">
           <!-- ▶ TO REPLACE: swap src= with your Chicken Salad photo. 1:1 ratio. -->
           <div class="day-image img-slot">
-            <img src="https://images.unsplash.com/photo-1543339494-b4cd4f7ba686?w=600&auto=format&fit=crop&q=80" alt="Chicken Salad">
+            <img src="images/botd-chicken-salad.jpg" alt="Chicken Salad">
           </div>
           <div class="day-text">
             <div class="day-label">Tuesday</div>
@@ -2420,7 +2358,7 @@
         <div class="botd-day">
           <!-- ▶ TO REPLACE: swap src= with your Ahi Bowl photo. 1:1 ratio. -->
           <div class="day-image img-slot">
-            <img src="https://images.unsplash.com/photo-1604908554049-01ab2adcafd5?w=600&auto=format&fit=crop&q=80" alt="Ahi Bowl">
+            <img src="images/botd-ahi.jpg" alt="Ahi Bowl">
           </div>
           <div class="day-text">
             <div class="day-label">Wednesday</div>
@@ -2430,7 +2368,7 @@
         <div class="botd-day">
           <!-- ▶ TO REPLACE: swap src= with your Salmon Salad photo. 1:1 ratio. -->
           <div class="day-image img-slot">
-            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80" alt="Salmon Salad">
+            <img src="images/botd-salmon-salad.jpg" alt="Salmon Salad">
           </div>
           <div class="day-text">
             <div class="day-label">Thursday</div>
@@ -2440,7 +2378,7 @@
         <div class="botd-day">
           <!-- ▶ TO REPLACE: swap src= with your Katsu Bowl photo. 1:1 ratio. -->
           <div class="day-image img-slot">
-            <img src="https://images.unsplash.com/photo-1606755962773-d324e9a13086?w=600&auto=format&fit=crop&q=80" alt="Katsu Bowl">
+            <img src="images/botd-katsu.jpg" alt="Katsu Bowl">
           </div>
           <div class="day-text">
             <div class="day-label">Friday</div>
@@ -2469,7 +2407,7 @@
         <div class="recipe-card">
           <!-- ▶ TO REPLACE: swap src= with your updated Honi Bowl photo. 4:3 ratio. -->
           <div class="r-img img-slot">
-            <img src="https://images.unsplash.com/photo-1604908554049-01ab2adcafd5?w=900&auto=format&fit=crop&q=80" alt="Updated Honi Bowl">
+            <img src="images/recipe-honi.jpg" alt="Updated Honi Bowl">
           </div>
           <div class="r-tag">Updated Recipe</div>
           <h5>Honi Bowl</h5>
@@ -2481,7 +2419,7 @@
         <div class="recipe-card">
           <!-- ▶ TO REPLACE: swap src= with your updated Ahi Bowl photo. 4:3 ratio. -->
           <div class="r-img img-slot">
-            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=900&auto=format&fit=crop&q=80" alt="Updated Ahi Bowl">
+            <img src="images/recipe-ahi.jpg" alt="Updated Ahi Bowl">
           </div>
           <div class="r-tag">Updated Recipe</div>
           <h5>Ahi Bowl</h5>
@@ -2852,110 +2790,6 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
   reveals.forEach(el => io.observe(el));
 
-  // ── Image upload (per-slot, persisted to localStorage) ──
-  const STORAGE_PREFIX = 'honi-img-';
-  const STORAGE_KEYS_KEY = 'honi-img-keys';
-
-  // Hidden file input reused across slots
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.accept = 'image/*';
-  fileInput.style.display = 'none';
-  document.body.appendChild(fileInput);
-
-  let activeSlot = null;
-
-  // Track keys we've stored so we can list/clear
-  function getStoredKeys() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEYS_KEY) || '[]'); }
-    catch { return []; }
-  }
-  function saveStoredKeys(keys) {
-    try { localStorage.setItem(STORAGE_KEYS_KEY, JSON.stringify(keys)); } catch {}
-  }
-  function rememberKey(key) {
-    const keys = getStoredKeys();
-    if (!keys.includes(key)) { keys.push(key); saveStoredKeys(keys); }
-  }
-  function forgetKey(key) {
-    saveStoredKeys(getStoredKeys().filter(k => k !== key));
-  }
-
-  // Initialise every img-slot
-  const slots = document.querySelectorAll('.img-slot');
-  slots.forEach((slot, idx) => {
-    const slotId = 'slot-' + idx;
-    slot.dataset.slotId = slotId;
-
-    const img = slot.querySelector('img');
-    if (!img) return;
-
-    // Save the original src so we can restore on reset
-    slot.dataset.originalSrc = img.getAttribute('src');
-
-    // Reset button (hidden until custom image present)
-    const resetBtn = document.createElement('button');
-    resetBtn.className = 'reset-btn';
-    resetBtn.type = 'button';
-    resetBtn.textContent = 'Reset';
-    resetBtn.setAttribute('aria-label', 'Reset to default image');
-    resetBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      img.src = slot.dataset.originalSrc;
-      slot.classList.remove('has-custom');
-      try { localStorage.removeItem(STORAGE_PREFIX + slotId); } catch {}
-      forgetKey(slotId);
-    });
-    slot.appendChild(resetBtn);
-
-    // Restore previously uploaded image, if any
-    try {
-      const saved = localStorage.getItem(STORAGE_PREFIX + slotId);
-      if (saved) {
-        img.src = saved;
-        slot.classList.add('has-custom');
-      }
-    } catch {}
-
-    // Click anywhere on the slot to upload
-    slot.addEventListener('click', () => {
-      activeSlot = slot;
-      fileInput.value = '';   // reset so same file can be reselected
-      fileInput.click();
-    });
-  });
-
-  // Handle the file pick
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files && e.target.files[0];
-    if (!file || !activeSlot) return;
-    if (!file.type.startsWith('image/')) {
-      alert('Please select an image file.');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (evt) => {
-      const dataUrl = evt.target.result;
-      const img = activeSlot.querySelector('img');
-      const slotId = activeSlot.dataset.slotId;
-
-      img.src = dataUrl;
-      activeSlot.classList.add('has-custom');
-
-      // Try to persist; if quota exceeded, gracefully fall back
-      try {
-        localStorage.setItem(STORAGE_PREFIX + slotId, dataUrl);
-        rememberKey(slotId);
-      } catch (err) {
-        console.warn('Could not save image to localStorage (size/quota):', err);
-        alert('Image is too large to save between page loads, but it will display for this session.');
-      }
-      activeSlot = null;
-    };
-    reader.onerror = () => { alert('Could not read file.'); activeSlot = null; };
-    reader.readAsDataURL(file);
-  });
 </script>
 
 </body>
